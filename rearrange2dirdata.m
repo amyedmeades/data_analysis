@@ -1,0 +1,1 @@
+data = readmatrix('SCNDH2O 19C 733 wfms 22 fs step_0.000ps_2DIR.csv');
