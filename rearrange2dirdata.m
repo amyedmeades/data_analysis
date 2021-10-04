@@ -11,13 +11,14 @@ for i= 1:last; %for each data file
     filename = string(filename); %convert the file name to a string
     filename = char(filename); %convert the string to a character array so we can pick out a section
     data = readmatrix(filename); %read in the data
-    w1(i,:)=data(2:257,1); %select w1 data and add to matrix. This could be more automated
-    w3(i,:)=data(1,2:365); % select w3 data and add to matrix. This could be more automated
-    R(i,:,:)=data(2:257,2:365); %select R data and add to matrix
+    readydata(i).w1=data(2:257,1); %select w1 data and add to structure. This could be more automated
+    readydata(i).w3=data(1,2:365); % select w3 data and add to structure. This could be more automated
+    readydata(i).R=data(2:257,2:365); %select R data and add to structure
     time=strfind(filename,'_'); %search filename for underscore to indicate where t2 is
     t2pos=time(1)+1; %calculate the position of t2 in the filename
-    t2(i)=str2double(filename(t2pos:t2pos+4)); %extract t2 from the file name and add to matrix
+    readydata(i).t2=str2double(filename(t2pos:t2pos+4)); %extract t2 from the file name and add to structure
 end
+
 
 
 
